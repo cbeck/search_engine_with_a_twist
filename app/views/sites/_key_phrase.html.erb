@@ -1,0 +1,10 @@
+	<tr>
+	  <td><%= remove_item("key phrase", 1) %></td>
+		<td><%= text_field_tag "key_phrase[][phrase]", key_phrase.phrase %> </td>
+		<td><%= text_field_tag "key_phrase[][label]", key_phrase.label %> </td>
+		<td align="center"><%= check_box_tag "key_phrase[][preferred]", "1", key_phrase.preferred %></td>
+		<td align="center"><%= check_box_tag "key_phrase[][paid]", "1", key_phrase.paid %></td>
+		<td align="center"><%= check_box_tag "key_phrase[][linkable]", "1", key_phrase.linkable %></td>
+		<td><%= text_field_tag "key_phrase[][advertisement_url]", key_phrase.advertisement_url %></td>
+		<td><%= select_tag "key_phrase[][ad_context]", options_for_select({"Full Site" => "full", "State Only" => "state", "Local MSA" => "msa"}, key_phrase.ad_context)%>
+	</tr>

@@ -1,0 +1,12 @@
+<% menu_id = "item_menu_#{blacklisted_site.id}" %>
+<tr onmouseover="$('<%=menu_id%>').style.visibility='visible'" 
+	  onmouseout="$('<%=menu_id%>').style.visibility='hidden'" class="<%= cycle("odd", "even") -%>" id="<%=dom_id(blacklisted_site)%>">
+	<td>
+		<div id="<%=menu_id%>" class="item_menu">
+		<%= link_to image_tag('bin.png', :title=>"Delete #{blacklisted_site.url}"), admin_blacklisted_site_path(blacklisted_site), 
+				:confirm => 'This will permanently delete all information for #{blacklisted_site.url} from our system. This cannot be undone. Are you sure you want to do this?', :method => :delete %>
+	  <%= link_to image_tag('pencil.png', :title=>"Edit #{blacklisted_site.url}"), edit_admin_blacklisted_site_path(blacklisted_site) %>
+	  </div>
+	  <%= blacklisted_site.url %>
+	</td>
+</tr>

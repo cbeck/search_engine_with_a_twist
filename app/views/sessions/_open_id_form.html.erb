@@ -1,0 +1,12 @@
+<% form_tag begin_sessions_path do -%>
+	<h4>Sign in with OpenID</h4>
+  <p>
+    <label>
+      Identity URL:
+      <%= text_field_tag :open_id_url, nil, :style => 'width:250px' %>
+    </label>
+    <%= submit_tag :Verify %>
+  </p>
+  <p>Don't have an OpenID?  Find out more <%=link_to 'here', openid_url%>.</p>  
+  
+<% end -%>

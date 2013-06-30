@@ -1,0 +1,9 @@
+<p>
+  <b>Primary Topic</b><br />
+  <% unless @primary_topics.empty? %>
+    <%= collection_select(:primary_category, :id, @primary_topics, :id, :name, {:prompt => true})%>
+    <%= observe_field 'primary_category_id', :url => {:action => :load_sub_topics}, :with => "'id=' + value"%>
+  <% else %>
+    This super category has no primary topics. Please add one that is appropriate for this site before continuing.
+  <% end %>
+</p>

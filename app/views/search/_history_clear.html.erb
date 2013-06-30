@@ -1,0 +1,5 @@
+<script>
+	Event.observe(window, 'load', function() { 
+		<%= remote_function :url => { :controller => 'history', :action => 'destroy', :host => MY_HOST } %> 
+	});
+</script>

@@ -1,0 +1,12 @@
+
+retail:
+  name: Retail
+
+restaurant:
+  name: Restaurant
+
+cool:
+  name: Cool
+
+moving:
+  name: Moving

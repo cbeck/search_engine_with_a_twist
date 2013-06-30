@@ -1,0 +1,12 @@
+<% unless @search.related_topics.blank? %>
+	<div id="related-links-box">
+	<h2>Related Topics</h2>
+		<div id="related-links-scroll">
+			<ul class="related-links-list">
+				<% for item in @search.related_topics %>
+						<li><%=link_to item.name, keyphrase_uri(item, @search) %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+<% end -%>

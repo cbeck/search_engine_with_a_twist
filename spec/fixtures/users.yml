@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+basic:
+  email: basic@netphase.com
+  salt: 6676525af203e88945fe64ecec835be0877fad65
+  crypted_password: 8056aa624b3503242f478a0dacbbd1d40d7ce835  # test
+  activated_at: <%=Time.now%>
+  
+admin:
+  email: scott@netphase.com
+  salt: 6676525af203e88945fe64ecec835be0877fad65
+  crypted_password: 8056aa624b3503242f478a0dacbbd1d40d7ce835  # test
+  activated_at: <%=Time.now%>
+  admin: 1

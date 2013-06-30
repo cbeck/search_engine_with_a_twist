@@ -1,0 +1,8 @@
+<p>
+  <b>Primary Topic</b><br />
+  <% unless @primary_topics.empty? %>
+    <%= collection_select(:primary_category, :id, @primary_topics, :id, :name, {:prompt => "Assign this topic to the above Super Category"})%>
+  <% else %>
+    This super category has no primary topics. This topic will be assigned as the first primary topic for this super category.
+  <% end %>
+</p>

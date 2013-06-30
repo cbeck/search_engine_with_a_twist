@@ -1,0 +1,19 @@
+<%= javascript_include_tag "ajax_results" %>
+
+<%= hidden_field_tag :history_index, "" %>
+<%= hidden_field_tag :total_pages, @search.total_pages %>
+<%= hidden_field_tag :page_id, Time.now.to_i %>
+
+<div id="results">
+	<div id="results-scroll">
+		<div id="more_history">
+    	<ul class="results-list" id="results-list">
+  			<%= render :partial => "site", :collection => @search.sites %>
+  		</ul>
+    </div>
+    <div style="display:none;" id="more_loading"><strong>More results are being loaded...</strong><br />If you are using the scroll bar, release your mouse to see more.</div>
+    <div style="display:none;" id="page_end"><p><strong>This is the end.</p></strong></div>
+    <div style="display:none;" id="no_results"><p><strong>No results matched your search.</p></strong></div>
+    <div style="position:absolute;top:0px;left:0px;visibility:hidden;" id="spacer">&nsbp;</div>
+	</div>
+</div>

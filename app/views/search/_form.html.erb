@@ -1,0 +1,60 @@
+<div id="search-form">
+  <div id="home_filter_div" class="tooltip-container" style="display: none;">
+  	<div class="tooltip-top">
+  		<p class="tootip-text">Select Filters AFTER Your Search Results Appear</p>
+  	</div>
+  	<div class="tooltip-bottom"></div>
+  </div>
+  
+  <div id="home_see_div" class="tooltip-container" style="display: none;">
+  	<div class="tooltip-top">
+  		<p class="tootip-text">Read news, blogs, read recipes, get advice, check out reference tools, dig up a friend's number, find computer code, etc.</p>
+  	</div>
+  	<div class="tooltip-bottom"></div>
+  </div>
+
+  <div id="home_do_div" class="tooltip-container" style="display: none;">
+  	<div class="tooltip-top">
+  		<p class="tootip-text">Download music, play online games, tour 3D architecture, network with friends, watch TV, blog, upload a pdf, bookmark stuff, etc.</p>
+  	</div>
+  	<div class="tooltip-bottom"></div>
+  </div>
+
+  <div id="home_shop_div" class="tooltip-container" style="display: none;">
+  	<div class="tooltip-top">
+  		<p class="tootip-text">Shop the latest trends, buy music, movies, plane tickets, a computer, a home, insurance, rent an apartment, apply for credit, etc. </p>
+  	</div>
+  	<div class="tooltip-bottom"></div>
+  </div>
+
+  <div id="home_find_div" class="tooltip-container" style="display: none;">
+  	<div class="tooltip-top">
+  		<p class="tootip-text">Discover Chicago, track down a repair shop, locate your new home town, pinpoint a restaurant, find Mickey Mouse, etc.</p>
+  	</div>
+  	<div class="tooltip-bottom"></div>
+  </div>
+	<% form_for :search, @search, 
+				:url => { :action => "create", :host => MY_HOST }, 
+				:html => {
+					:id => 'search_form_tag',
+					:onsubmit => "document.location='http://#{MY_HOST}/search/' + $('searchForm').value; return false;" 
+				} do |f| %>
+		<%= f.text_field :term, :class => 'search-form-inpt', :id=>"searchForm" ,
+					:maxlength=>"1000", :onclick=>"clearDefault(this, '#{Search::DEFAULT_TERM}')" %>
+		<div id="search-button" title="Search">
+			<%=link_to_function 'search', "document.location='http://#{MY_HOST}/search/' + $('searchForm').value; return false;" %></div>
+		<div id="filter-box">
+			<ol id="filter-list">
+				<li class="filter-box-title"><%= link_to "filter your results", "#", :onmouseover => "toggle_div('#{"home_filter_div"}')", :onmouseout => "toggle_div('#{"home_filter_div"}')", :class => "activity_link" %></li>
+				<% Activity.all.each do |activity| -%>
+					<li class="<%=filter_class(activity.name)%>">
+						<%=f.radio_button 'activity', activity.name, :disabled => "true" %>
+						<%= link_to activity.description, "#", :class => "activity_link", :onmouseover => "toggle_div('#{"home_" + activity.name + "_div"}')", :onmouseout => "toggle_div('#{"home_" + activity.name + "_div"}')"  %>
+					</li>
+				<% end -%>
+				<li id="clear-filter" class="filter"><%=link_to 'clear result filters', '#;', :title => "Clear All Results for See It, Do It, Shop It, Find It"%></li>		
+			</ol>
+		</div>
+		<% end -%>
+	</form>
+</div>

@@ -1,0 +1,13 @@
+<% menu_id = "item_menu_#{topic.id}" %>
+<tr onmouseover="$('<%=menu_id%>').style.visibility='visible'" 
+	  onmouseout="$('<%=menu_id%>').style.visibility='hidden'" class="<%= cycle("odd", "even") -%>" id="<%=dom_id(topic)%>">
+	<td>
+		<div id="<%=menu_id%>" class="item_menu">
+		<%= link_to image_tag('bin.png', :title=>"Delete #{topic.name}"), admin_topic_path(topic), 
+				:confirm => 'This will permanently delete all information for #{topic.name} from our system. This cannot be undone. Are you sure you want to do this?', :method => :delete %>
+	  <%= link_to image_tag('pencil.png', :title=>"Edit #{topic.name}"), edit_admin_topic_path(topic) %>
+	  </div>
+	  <%= link_to topic.name, [:admin, topic] %>
+	</td>
+	<td><%= render_topic_hierarchy(topic, true)%></td>
+</tr>

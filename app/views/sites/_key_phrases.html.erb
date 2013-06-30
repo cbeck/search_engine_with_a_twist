@@ -1,0 +1,15 @@
+<p><b>Key Words</b><br/>
+	<table cellpadding="2" id="key_phrases">
+		<tr>
+		  <th></th>
+		  <th>Phrase</th><th>Display Text</th>
+			<th>Preferred?</th><th>Paid?</th><th>Linkable?</th>
+			<th>Advertisement URL</th>
+			<th>Ad Context*</th>
+		</tr>
+		<%= render :partial => 'key_phrase', :collection => @site.key_phrases %>
+	</table>
+	<i>* Note: The ad context only applies if the key phrase is <strong>preferred</strong></i><br/>
+	<%= add_item_link(:key_phrases, 'key_phrase', KeyPhrase.new, 'key phrase') %>
+	<br/><br/>
+</p>

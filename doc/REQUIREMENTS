@@ -1,0 +1,52 @@
+Plugins and Gems used by this app:
+
+Ruby 1.8.6
+RubyGems 0.9.5
+Rails 2.0.2
+
+Gems
+	ruby-openid
+	activemerchant
+	capistrano
+	capistrano-ext
+	railsmachine
+	rubyworks-ec2
+	fastercsv
+	mocha (for unit testing active_merchant)
+	money
+	google_geocode
+
+
+Restful Auth Plugin
+	script/plugin install http://svn.eastmedia.com/svn/bantay/plugins/trunk/restful_open_id_authentication
+
+ActiveMerchant
+	script/plugin install http://activemerchant.googlecode.com/svn/trunk/active_merchant
+
+RSpec
+	script/plugin install -x http://rspec.rubyforge.org/svn/tags/CURRENT/rspec
+	script/plugin install -x http://rspec.rubyforge.org/svn/tags/CURRENT/rspec_on_rails
+	
+Rubyworks
+  Download http://www.nutrun.com/rwec2/releases/rubyworks-ec2-0.1.3.gem
+  gem i [path-to-file]/rubyworks-ec2-0.1.3.gem
+  More about using Rubyworks and what it means for EC2
+  http://nutrun.com/weblog/rubyworks-production-stack-on-amazon-ec2/
+	
+  
+EC2 Command Line Tools (Java Tools to manage EC2 instance from terminal)
+  http://developer.amazonwebservices.com/connect/entry.jspa?externalID=351&categoryID=88
+  More about EC2 
+  http://docs.amazonwebservices.com/AWSEC2/2007-08-29/GettingStartedGuide/
+  
+
+Environment Variables
+  export JAVA_HOME=/Library/Java/Home (default mac installation for Java 1.5)
+  export EC2_PRIVATE_KEY=~/.ec2/pk-YMC4ZT7XIPO2GR3KMW6FE33RBC4KNCFH.pem (obtain key from Chris)
+  export EC2_CERT=~/.ec2/cert-YMC4ZT7XIPO2GR3KMW6FE33RBC4KNCFH.pem (obtain cert from Chris)
+  export EC2_HOME=~/ec2-api-tools-1.2-13740 (location of EC2 Tools)
+  export PATH=$PATH:$EC2_HOME/bin (so java can find the tools)
+
+MySQL
+	gem install mysql -- --with-mysql-config=/usr/bin/mysql_config
+

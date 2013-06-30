@@ -1,0 +1,61 @@
+<html>
+<head>
+	<%#= stylesheet_link_tag 'styles' unless @skip_formatting %>
+	<style type="text/css" media="screen">
+		body {
+			font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+			background: #FFF;
+			padding: 0;
+			margin: 0;
+		}
+		h2 {
+			background: transparent url(../images/MSA-Link-BG.jpg) repeat-x scroll left top;
+			font-size: 20px;
+			font-weight: lighter;
+			padding: 10px 10px 5px;
+			margin: 0;
+		}
+		span.nav {
+			color:#FF3333;
+			margin: 0 1em;
+		}
+		a {
+			color:#666666;
+		}
+		p {
+			margin: 4px 1em 0;
+			font-size: 0.8em;
+		}
+		#history {
+			height: 95px;
+			overflow: auto;
+			margin: 0 0 8px;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			font-size: 0.8em;
+		}
+		ul li {
+			padding: 5px 1em 0px;
+			list-style-type: none;
+		}
+	</style>
+</head>
+<body>
+	<% @current = @history.requests.pop %>
+
+	<h2>Search History</h2>
+	<% unless @current.blank? -%>
+	<span class="nav">current:</span><br/>
+	<p><%=link_to @current[:name], (@current[:url] || request.url), :target => "_parent"%></p>
+	<div id="history">
+	<ul>
+		<% for term in @history.requests.reverse %>
+			<li><%=link_to term[:name], term[:url], :target => "_parent"%></li>
+		<% end %>
+	</ul>
+	</div>
+	<% end -%>
+</body>
+</html>

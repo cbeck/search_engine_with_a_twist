@@ -1,0 +1,18 @@
+<% unless site.ad_only? %>
+<li class="activity_<%=site.activity.name%>">
+  <% if site.official? -%>
+    <div class="official_site">Official</div>
+  <% end -%>
+	<h2><%=site.name%></h2>
+	<p><%=site.description%></p>
+	<ul class="results-action">
+		<li class="highlight-yellow-action">Website Fee?: <%=(site.free?) ? 'Free' : '$$$' %></li>
+		<li class="highlight-yellow-action">Registration: 
+				<%=(site.registration_required?) ? 'Yes' : 'No' %> </li>
+		<li class="location">Location: <%= (site.metro_service_area.nil?) ? "Online Only" : (link_to render_location_link_label(site), msa_uri(site.metro_service_area, @search), :class => "msa-location")%></li>
+	</ul>
+	<a href="<%=site.url%>" class="results-permalink" target="_new" title="<%=site.url%>">
+	  <%=site.short_url%>
+	</a>
+</li>
+<% end %>			

@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Server prep - loads database with CSV data
+
+bunzip2 data/sites.csv.bz2
+bunzip2 data/domains.csv.bz2
+bunzip2 data/msa_links.csv.bz2
+bunzip2 data/link_list.csv.bz2
+bunzip2 data/blacklist.csv.bz2
+
+# loads site data: create Site, KeyPhrase, MetroServiceArea, Topic
+# depends: Activity,  State
+rake ubexact:sites:load
+
+
+# loads topic data from site file
+# ** unnecessary if doing full site load
+# depends: Site
+# rake ubexact:topics:load
+
+
+# load domains and associates with existing Topics, MetroServiceAreas and KeyPhrases
+# depends: Topic, MetroServiceArea, Keyphrase
+
+rake ubexact:domains:load
+
+
+# loads msa.metro_service_area_links
+# depends: Domain, MetroServiceArea
+rake ubexact:msa_links:load
+
+
+# loads un-categorized sites (just urls)
+# depends: other Sites already loaded
+rake ubexact:link_list:load
+
+
+# loads BlacklistedSite items
+# depends: none
+rake ubexact:blacklist:load
+
+bzip2 data/sites.csv
+bzip2 data/domains.csv
+bzip2 data/msa_links.csv
+bzip2 data/link_list.csv
+bzip2 data/blacklist.csv
+

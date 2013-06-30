@@ -1,0 +1,8 @@
+<p>
+  <b>Sub Topic</b><br />
+  <% unless @sub_topics.empty? %>
+    <%= collection_select(:site, :topic_id, @sub_topics, :id, :name, {:prompt => true})%>
+  <% else %>
+    This primary topic has no sub topics. Please add one that is appropriate for this site before continuing.
+  <% end %>
+</p>

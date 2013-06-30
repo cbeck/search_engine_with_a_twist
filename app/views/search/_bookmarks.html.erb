@@ -1,0 +1,32 @@
+<div id="bookmark-sub">
+	<div id="bookmark-box">
+		<p class="bookmark-text">Bookmark this page.</p>    
+		<ul class="bookmark-list">
+			<li><%=link_to image_tag('Delicious-Bookmark.jpg', :title => 'Delicious bookmark'), "http://del.icio.us/post?url=#{request.url}&title=ubExact+results+for+#{CGI::escape(@search.term)}" %></li>
+  		<li><%=link_to image_tag('Google-Bookmark.jpg', :title => 'Google bookmark'), "http://www.google.com/bookmarks/mark?op=edit&bkmk=#{request.url}&title=ubExact+results+for+#{CGI::escape(@search.term)}" %></li>
+  		<li><%=link_to image_tag('Digg-Bookmark.jpg', :title => 'Digg bookmark'), "http://digg.com/submit?url=#{request.url}&title=ubExact+results+for+#{CGI::escape(@search.term)}" %></li>
+  		<li><%=link_to image_tag('Furl-Bookmark.jpg', :title => 'Furl bookmark'), "http://www.furl.net/storeIt.jsp?t=ubExact+results+for+#{CGI::escape(@search.term)}&u=#{request.url}" %></li>
+  		<li><%=link_to image_tag('Stumbleupon-Bookmark.jpg', :title => 'Stumbleupon bookmark'), "http://www.stumbleupon.com/submit?url=#{request.url}&title=ubExact+results+for+#{CGI::escape(@search.term)}" %></li>
+  		<li><%=link_to image_tag('Facebook-Bookmark.jpg', :title => 'Facebook bookmark'), "http://www.facebook.com/share.php?u=#{request.url}", :onclick => "return fbs_click()", :target => "_blank" %></li>
+  		<li><%=link_to image_tag('Yahoo-Bookmark.jpg', :title => 'Yahoo bookmark'), "http://myweb2.search.yahoo.com/myresults/bookmarklet?t=ubExact+results+for+#{CGI::escape(@search.term)}&u=#{request.url}" %></li>
+  		<li><%=link_to image_tag('Redit-Bookmark.jpg', :title => 'Redit bookmark'), "http://reddit.com/submit?url=#{request.url}&title=ubExact+results+for+#{CGI::escape(@search.term)}" %></li>
+  		<li><%=link_to image_tag('Magnolia-Bookmark.jpg', :title => 'Magnolia bookmark'), "http://ma.gnolia.com/bookmarklet/add?url=#{request.url}&title=ubExact+results+for+#{CGI::escape(@search.term)}" %></li>
+  		<li><%=link_to image_tag('Netscape-Bookmark.jpg', :title => 'Netscape bookmark'), "http://www.netscape.com/submit/?U=#{request.url}&T=ubExact+results+for+#{CGI::escape(@search.term)}" %></li>
+      <li><%=link_to image_tag('Netvouz-Bookmark.jpg', :title => 'Netvouz bookmark'), "http://www.netvouz.com/action/submitBookmark?url=#{request.url}&title=ubExact+results+for+#{CGI::escape(@search.term)}" %></li>
+      <li><%=link_to image_tag('Sphinn-Bookmark.jpg', :title => 'Sphinn bookmark'), "http://www.sphinn.com/submit.php?url=#{request.url}&title=ubExact+results+for+#{CGI::escape(@search.term)}" %></li>
+		</ul>
+	</div>
+	<!--
+	<div id="email-box">
+		<p class="email-text">Email this page to a friend.</p>
+		<form action="email" method="get">
+			<input name="email" value="enter email address here" size="25" maxlength="200" class="email-inpt" type="text">
+			<div class="send-email-button" title="send"><a href="#">send</a></div>
+		</form>
+	</div>
+	-->
+</div>
+
+
+
+<script>function fbs_click() {u=location.href;t=document.title;window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');return false;}</script>

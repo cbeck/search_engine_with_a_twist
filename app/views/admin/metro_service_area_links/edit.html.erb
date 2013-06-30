@@ -1,0 +1,18 @@
+<h2>Edit a Link for <%= @metro_service_area_link.metro_service_area.name %></h2>
+
+<%= error_messages_for :metro_service_area_link %>
+
+<% form_for([:admin, @metro_service_area_link]) do |f| %>
+  <dl>
+    <dd>Name</dd>
+    <dt><%= f.text_field :name %></dt>
+    <dd>URL</dd>
+    <dt><%= f.text_field :url%></dt>
+  </dl>
+  <p></p>
+  <p>
+    <%= f.submit "Update" %> <%= link_to "Cancel", :back %>
+  </p>
+   <%= f.hidden_field :metro_service_area_id %>
+<% end %>
+

@@ -1,0 +1,16 @@
+<h1>New metro_service_area</h1>
+
+<%= error_messages_for :metro_service_area %>
+
+<% form_for([:admin, @metro_service_area]) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', admin_metro_service_areas_path %>

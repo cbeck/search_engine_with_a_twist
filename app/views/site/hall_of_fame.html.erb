@@ -1,0 +1,37 @@
+<h2 class="center">ubExact User Contributed <br/>Hall of Fame</h2>
+
+<% if @users.blank? -%>
+<div align="center">
+	<h3>Be the first to join the Hall of Fame!</h3>
+	<% if logged_in? -%>
+		<h4><%=link_to 'Suggest a Link', suggest_url%></h4>
+	<% else -%>
+		<h4><%=link_to 'Signup today', signup_url%></h4>
+	<% end -%>
+</div>
+<% else -%>
+	<% @users.each {|user| %>
+	  <div class="hall_of_fame_user">
+	    <%= render_hall_of_fame_image(user) %>
+	    <table class="hall_of_fame_user_details" cellpadding="0" cellspacing="0">
+	      <th colspan="2"><%= (user.ub_alias.blank?) ? "Anonymous" : user.ub_alias %></th>
+	      <tr class="odd">
+	        <td class="label">Location</td>
+	        <td><%= (user.person.nil? || user.person.country.blank? ) ? "Unknown" : user.person.country   %></td>
+	      </tr>
+	      <tr class="even">
+	        <td class="label">Links Accepted</td>
+	        <td><%= user.links_accepted %></td>
+	      </tr>
+	      <tr class="odd">
+	        <td class="label">Self Description</td>
+	        <td><%= (user.person.nil? || user.person.description.blank? ) ? "None Provided" :  user.person.description %></td>
+	      </tr>
+	      <tr class="even">
+	        <td class="label">Email</td>
+	        <td><%= mail_to(user.email, nil, :replace_at => ' (at) ', :replace_dot => ' (dot) ') %></td>
+	      </tr>
+	    </table>
+	  </div>
+	<% } %>
+<% end -%>

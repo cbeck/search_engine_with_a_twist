@@ -1,0 +1,12 @@
+<% form_for [:admin, @metro_service_area_link] do |f| %>
+  <dl>
+    <dd>Name</dd>
+    <dt><%= f.text_field :name %></dt>
+    <dd>URL</dd>
+    <dt><%= f.text_field :url%></dt>
+  </dl>
+  <p>
+    <%= f.submit "Add" %>
+  </p>
+  <%= f.hidden_field :metro_service_area_id %>
+<% end %>

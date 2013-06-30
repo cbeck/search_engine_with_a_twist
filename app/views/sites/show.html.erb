@@ -1,0 +1,99 @@
+<% if logged_in? && current_user.is_ubexpert? -%>
+<div id="page_menu">
+  <%= link_to 'Edit', edit_site_path(@site)%> 
+</div>
+<h2>Site Details</h2>
+<% else %>
+<h2>Thanks For Your Submission!</h2>
+
+<h3>You submitted...</h3>
+<% end %>
+
+
+<table id="items">
+  <tr>
+		<th>Field</th>
+		<th>Value</th>
+	</tr>
+	<tr class="odd">
+	  <td class="bold">URL</td>
+	  <td><%=link_to @site.short_url, @site.url, :title => @site.url, :target => "new" %></td>
+	</tr>
+	<% if logged_in? && current_user.is_ubsomething? %>  
+	<tr class="even">
+	  <td class="bold">Name</td>
+	  <td><%=h @site.name %></td>
+	</tr>
+	<tr class="odd">
+	  <td class="bold">Description</td>
+	  <td><%=h @site.description %></td>
+	</tr>
+  <tr class="even">
+    <td class="bold">Free</td>
+    <td><%=h @site.free %></td>
+  </tr>
+  <tr class="odd">
+    <td class="bold">Registration Required</td>
+    <td><%=h @site.registration_required %></td>
+  </tr>
+  <% end %>
+  <% if logged_in? && current_user.is_ubexpert? %>
+  <tr class="even">
+    <td class="bold">Official</td>
+    <td><%=h @site.official %></td>
+  </tr>
+  <tr class="odd">
+    <td class="bold">Activity</td>
+    <td><%=h @site.activity.name unless @site.activity.nil? %></td>
+  </tr>
+  <tr class="even">
+    <td class="bold">Topic</td>
+    <td><%=h render_topic_hierarchy(@site.topic) unless @site.topic.nil?  %></td>
+  </tr>
+  <% if @site.metro_service_area.nil? %>
+  <tr class="odd">
+    <td class="bold">Metro Service Area</td>
+    <td>This site is an online-only site <%= (@site.all_msas?) ? "and visible in all MSAs." : "and not assigned to a local MSA." %></td>
+  </tr>
+  <% else %>
+  <tr class="odd">
+    <td class="bold">Metro Service Area</td>
+    <td><%=h @site.metro_service_area.name  unless @site.metro_service_area.nil?  %></td>
+  </tr>
+  <tr class="even">
+    <td class="bold">Country Code</td>
+    <td><%=h @site.country_code  %></td>
+  </tr>
+  <tr class="odd">
+    <td class="bold">State</td>
+    <td><%=h @site.state %></td>
+  </tr>
+  <tr class="even">
+    <td class="bold">City</td>
+    <td><%=h @site.city %></td>
+  </tr>
+  <tr class="odd">
+    <td class="bold">Online Status</td>
+    <% all_msa_text = (@site.all_msas) ? " and for all MSAs" : ""%>
+    <td><%= (@site.online) ? "This site is included in searches for online-only sites#{all_msa_text}." : "This site is NOT included in searches for online-only sites." %>
+    </td>
+  </tr>
+  <% end %>
+  <tr class="even">
+    <td class="bold">Keywords</td>
+    <td><%= @site.key_phrases.collect {|kp| kp.phrase}.to_sentence %></td>
+  </tr>
+  <tr class="odd">
+    <td class="bold">Comments</td>
+    <td><% @site.ordered_comments.each {|c|  %>
+          <p><%= c.comment %></p>
+        <% } %>
+    </td>
+  </tr>
+
+  <% end %>
+  
+</table>
+
+
+

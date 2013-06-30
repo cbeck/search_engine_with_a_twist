@@ -1,0 +1,50 @@
+<p>
+  <b>Url</b><br />
+  <%= form.text_field :url %>
+</p>
+
+<% if logged_in? && current_user.is_ubsomething? -%>
+<p>
+  <b>Name</b><br />
+  <%= form.text_field :name %>
+</p>
+
+<p>
+  <b>Description</b><br />
+  <%= form.text_area :description %>
+</p>
+
+<p>
+  <b>Free</b><br />
+  <%= form.check_box :free %>
+</p>
+
+<p>
+  <b>Registration required</b><br />
+  <%= form.check_box :registration_required %>
+</p>
+
+
+<% end -%>
+
+<% if logged_in? && current_user.is_ubexpert? -%>
+
+<p>
+  <b>Official</b><br />
+  <%= form.check_box :official %>
+</p>
+
+
+<p>
+  <b>Activity</b><br/>
+  <%= collection_select(:site, :activity_id, Activity.all, :id, :description, {:prompt => true}) %>
+</p>
+
+<% end -%>
+
+<% instructions = "Enter 4 keywords that best fit this site as well as a brief description that describes its main focus." unless logged_in? %>
+<p>
+  <b>Comments</b><br/>
+  <%= text_area_tag :comments, instructions, :cols => 50,:rows => 6 %>
+</p>
+

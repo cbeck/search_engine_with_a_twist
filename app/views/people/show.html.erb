@@ -1,0 +1,33 @@
+<p>
+  <b>Personable:</b>
+  <%=h @person.personable_id %>
+</p>
+
+<p>
+  <b>Personable type:</b>
+  <%=h @person.personable_type %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%=h @person.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h @person.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @person.email %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @person.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

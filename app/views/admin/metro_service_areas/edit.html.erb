@@ -1,0 +1,19 @@
+<div id="page_menu">
+  <%= link_to 'Back', :back %> 
+</div>
+
+<h2>Edit an MSA</h2>
+
+<%= error_messages_for :metro_service_area %>
+
+<% form_for([:admin, @metro_service_area]) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>  <%= link_to "Cancel", :back%>
+  </p>
+<% end %>
+

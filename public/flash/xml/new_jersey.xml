@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<map state="New Jersey" background="" textColor="000000" normal="98ba97" rollover="98ba97" border="ffffff" rollover_sound="false">
+<county normal="485748" rollover="1d231d" name="Newark MSA" url="http://www.ubexactnewarkmsa.com"/>
+<county normal="" rollover="" name="" url=""/>
+<county normal="485748" rollover="1d231d" name="Newark MSA" url="http://www.ubexactnewarkmsa.com"/>
+<county normal="" rollover="" name="" url=""/>
+<county normal="5f715f" rollover="1d231d" name="Hackensack MSA" url="http://www.ubexacthackensackmsa.com"/>
+<county normal="485748" rollover="1d231d" name="Newark MSA" url="http://www.ubexactnewarkmsa.com"/>
+<county normal="" rollover="" name="" url=""/>
+<county normal="485748" rollover="1d231d" name="Newark MSA" url="http://www.ubexactnewarkmsa.com"/>
+<county normal="485748" rollover="1d231d" name="Newark MSA" url="http://www.ubexactnewarkmsa.com"/>
+<county normal="5f715f" rollover="1d231d" name="Jersey City MSA" url="http://www.ubexactjerseycitymsa.com"/>
+<county normal="485748" rollover="1d231d" name="Trenton MSA" url="http://www.ubexacttrentonmsa.com"/>
+<county normal="" rollover="" name="" url=""/>
+<county normal="" rollover="" name="" url=""/>
+<county normal="485748" rollover="1d231d" name="Camden MSA" url="http://www.ubexactcamdenmsa.com"/>
+<county normal="" rollover="" name="" url=""/>
+<county normal="485748" rollover="1d231d" name="Camden MSA" url="http://www.ubexactcamdenmsa.com"/>
+<county normal="485748" rollover="1d231d" name="Camden MSA" url="http://www.ubexactcamdenmsa.com"/>
+<county normal="" rollover="" name="" url=""/>
+<county normal="5f715f" rollover="1d231d" name="Vineland MSA" url="http://www.ubexactvinelandmsa.com"/>
+<county normal="485748" rollover="1d231d" name="Atlantic City MSA" url="http://www.ubexactatlanticcitymsa.com"/>
+<county normal="5f715f" rollover="1d231d" name="Ocean City MSA" url="http://www.ubexactoceancitymsa.com"/>
+</map>
+
+

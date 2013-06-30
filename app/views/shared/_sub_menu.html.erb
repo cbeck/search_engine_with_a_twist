@@ -1,0 +1,36 @@
+<% @cname = controller.controller_name 
+@aname = controller.action_name%>
+<!-- ubExact.com Sub Generic Menu start -->
+	<div id="sub-menu-col">
+		<ul class="sub-menu-list">
+		  <li><%= link_to "Home", "http://#{MY_HOST}" %></li>
+		  <% unless(logged_in? && current_user.admin?) %>		  
+			<li>
+			  <%= link_to "About Us", about_path, :class => render_nav_class('about') %>
+				<%= render_sub_menu('about')%>
+			</li>
+			<li><%= link_to "Press", press_path, :class => render_nav_class('press')  %></li>
+			<li><%= link_to "Privacy Policy", privacy_path, :class => render_nav_class('privacy')  %></li>
+			<li><%= link_to "Advertising", advertising_path, :class => render_nav_class('advertising')  %></li>
+			<li><%= link_to "Suggest a Link", suggest_path, :class => render_nav_class('new', 'sites')  %>
+			  <%= render_sub_menu('new', 'sites')%>
+			</li>
+			<li><%= link_to "Contact Us", contact_path, :class => render_nav_class('contact')  %></li>
+			<% end -%>
+			<% if logged_in? -%>
+  		  <% if current_user.admin? %>
+    		<li><%= link_to "Admin Dashboard", admin_path %></li>
+    		<li><%= link_to 'Manage Sites', admin_sites_path %></li>
+  			<li><%= link_to 'Manage MSAs', admin_metro_service_areas_path %></li>
+  			<li><%= link_to 'Manage Topics', admin_topics_path %></li>
+      	<li><%= link_to 'Manage Users', admin_users_path %></li> 
+      	<li><%= link_to 'Manage the Blacklist', admin_blacklisted_sites_path %></li>       
+    		<% end %>
+        <li><%= link_to "Logout", logout_path %></li>
+  		<% else -%>
+  		  <li><%= link_to "Login", login_path %></li>
+  		<% end -%>
+		</ul>
+	</div>
+<!-- ubExact.com Sub Generic Menu start -->
+

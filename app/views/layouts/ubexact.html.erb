@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>ubExact.com - Get what you think</title>
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<%#= stylesheet_link_tag 'ubexact' %>
+    <%#= javascript_include_merged :base %>
+		<%#= javascript_include_tag :all, :cache => true  %>
+		<script src="http://<%=MY_HOST%>/javascripts/prototype.js" type="text/javascript"></script>
+		<script src="http://<%=MY_HOST%>/javascripts/effects.js" type="text/javascript"></script>
+		<script src="http://<%=MY_HOST%>/javascripts/dragdrop.js" type="text/javascript"></script>
+		<script src="http://<%=MY_HOST%>/javascripts/controls.js" type="text/javascript"></script>
+		<script src="http://<%=MY_HOST%>/javascripts/application.js" type="text/javascript"></script>
+		<script src="http://<%=MY_HOST%>/javascripts/search.js" type="text/javascript"></script>
+		
+    <%= stylesheet_link_tag 'styles' unless @skip_formatting %>
+		<%= yield :page_scripts -%>
+  	<%= yield :page_css -%>  	
+</head>
+
+<body<%= " id='home'" if @search_home -%> onload="MM_preloadImages('/images/ubExact-Logo-Over.jpg')">
+  <div id="flasherrors" style="display:none;">
+ 	</div>
+ 	<div id="flashnotice" style="display:none;">
+ 	</div>
+ 	<%= show_ajax_flash_messages %>
+  
+  <% unless @search_home or @skip_formatting %>
+    <%=render :partial => '/shared/header'  %>
+    <div id="main">
+      <% if @show_nav %>
+      <%= render :partial => '/shared/sub_menu' %>
+        <div id="sub-content-col" class=<%= 'wide_col' if @hide_bookmarks -%>>
+          <%= yield %>
+        </div>
+      <%= render :partial => '/shared/side_bookmarks' unless @hide_bookmarks %>
+      <%= yield :side_links -%> 
+      <% else %>
+        <%= yield %>
+      <% end %>
+    </div>
+  <% else %>
+    <%= yield %>
+  <% end %>
+  <%=render :partial => '/shared/footer' unless @skip_formatting%>
+
+</body>
+</html>

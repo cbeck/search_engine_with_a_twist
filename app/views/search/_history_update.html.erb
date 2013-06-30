@@ -1,0 +1,4 @@
+<iframe width="0" height="0" frameborder="0" scrolling="auto"
+	src="<%= url_for :controller => 'history', :action => 'show', :host => MY_HOST,
+		:url => request.url, :msa => @search.msa_link, 
+		:topics => @search.topic_links, :term => @search.term %>"></iframe>

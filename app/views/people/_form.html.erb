@@ -1,0 +1,38 @@
+<% form.fields_for :person, person do |f| %>
+	<table>	
+	<tr>
+		<th align="left">First name</th>
+		<th align="left">Last name</th>
+	</tr>
+	<tr>
+		<td><%= f.text_field :first_name, :size => 25 %></td>
+		<td><%= f.text_field :last_name, :size => 25 %></td>
+	</tr>
+	<tr>
+		<th align="left">City</th>
+		<th align="left">Country <%= "(Currently #{person.country})" unless person.new_record? || person.country.blank? %></th>
+	</tr>
+	<tr>
+		<td><%= f.text_field :city, :size => 25 %></td>
+		<td><%= country_select("user[data][person]", :country, "United States", {:prompt => true})%></td>
+	</tr>
+	<tr>
+		<th align="left">Birth Year</th>
+	</tr>
+	<tr>
+		<td colspan="2"><%= f.text_field :birth_year, :size => 15 %></td>
+	</tr>
+	<tr>
+		<th align="left">Your Website Address (if applicable)</th>
+	</tr>
+	<tr>
+		<td colspan="2"><%= f.text_field :url, :size => 60 %></td>
+	</tr>
+	<tr>
+		<th align="left">25 Word Description of Yourself, Interests, Hobbies, Work</th>
+	</tr>
+	<tr>
+		<td colspan="2"><%= f.text_area :description, :size => 25 %></td>
+	</tr>
+	</table>
+<% end %>

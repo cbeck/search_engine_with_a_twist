@@ -1,0 +1,35 @@
+<% content_for("page_css") do -%>
+<style type="text/css">
+	div.clear {
+		clear:both;
+	}
+</style>
+<% end -%>
+
+<div id="search-tag">
+  <div id="search-tag-arrow"></div>
+  <p class="search-tag-text">You Can Also Search Through Your Address Bar by Typing  &quot;<b>ubexact</b>yourtopic<b>.com</b>&quot; or &quot;<b>ubexact</b>yourlocation<b>msa.com</b>&quot;</p>
+</div>
+<!-- ubExact.com Logo Box start -->
+<div id="logo-box">
+	<div id="logo-img"><%= link_to image_tag("ubExact-Logo.jpg", :width => 217, :height => 141, :title => "ubExact Home Page", :border => "0", :id => "img_logo", :onmouseover => "MM_swapImage('img_logo','','/images/ubExact-Logo-Over.jpg',1)", :onmouseout => "MM_swapImgRestore()"), "http://#{MY_HOST}" %></div>
+	<div id="how-to-text">
+	  <%= link_to image_tag("watch_video.png", :title=>"Watch Our Video", :width => 120, :height => 119, :border=>"0", :id=>"video_button", :onmouseover => "MM_swapImage('video_button','','/images/watch_video_over.png',1)", :onmouseout => "MM_swapImgRestore()"), "http://ubexact.com/demo" %>
+		<h2>How do I search with ubExact.com?</h2>
+		<p>Enter your search in the box below or, click on a Popular Search Category or Metro Service Area (MSA) or type &quot;<b>ubexact</b>yourtopic<b>.com</b>&quot; in your browser's address bar and <span class="tagline">get what you think!</span></p>
+
+	</div>
+</div>
+<!-- ubExact.com Logo Box end -->
+
+<%=render :partial => 'form' %>
+
+<%=render :partial => 'features' %>
+
+<% if @flash_filename == "usa" -%>
+	<%=render :partial => 'history_clear' %>
+<% else -%>
+	<%=render :partial => 'history_update' %>
+<% end -%>
+
+<div class="clear"><br/></div>

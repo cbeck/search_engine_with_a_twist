@@ -1,0 +1,19 @@
+<% one_column 360 %>
+
+<h3>Signup Complete</h3>
+<%#= render :partial => "sessions/open_id_form" %>
+<!--><br/><-->
+<%= error_messages_for :user %>
+
+<% form_tag :action => 'initiate_reset' do -%>
+
+<div class="form-outer">
+	<h5>Activate your account</h5>
+	<div class="form">
+	<p>Now, check your email at <strong><%=@user.email%></strong> for an email from us.  Click on the link provided and your account will be activated.</p>
+	
+	<p>If you do not receive the email right away, be sure to check your spam folder and while you're at it, add us to your contact list so you don't miss any important announcements.</p>
+	</div>
+</div>
+<% end -%>
+

@@ -1,0 +1,39 @@
+<% one_column(450) -%>
+
+<% content_for("page_css") do -%>
+<style type='text/css'>
+  #openid_logos { margin: 3em 0 2em; }
+  #openid_logos h4 { color: black; margin-bottom: 0.5em;}
+  #openid_logos img { margin: 0 0.5em; border: 1px solid black;}
+</style>
+<% end -%>
+<% openid_dir = 'http://openiddirectory.com/openid-providers-c-1.html' %>
+
+<h3>
+	<span style="margin-right: 2em">OpenID</span>
+	<span style="color: #2E719E;">Remember <strong>one username and password</strong>, not 100.</span>
+</h3>
+
+<div id="text">
+
+<h5>One login, many sites</h5>
+<p>An OpenID is a single username and password that lets you login to any OpenID-enabled site. OpenID makes remembering different usernames and passwords for different sites a thing of the past.</p>
+
+<h5>Getting one is fast &amp; easy</h5>
+<p>In fact, you may already have one. Every AOL/AIM user has an OpenID address (example: <em>openid.aol.com/screenname</em>). Or you can quickly obtain one from <%=link_to 'an OpenID provider', openid_dir %> like <a href="https://www.myopenid.com/">myOpenID</a>. It's free!</p>
+
+<h5>Works at thousands of sites</h5>
+<p>There are thousands of OpenID-enabled sites and more are getting on board every day.</p>
+
+<h5>It's an open standard</h5>
+<p>OpenID is a protocol made for the public, by the public. No one — not Google, not Microsoft, not Yahoo — owns or controls your login information: You do.</p>
+
+<div id='openid_logos' align="center">
+<h4>Get your OpenID at one of <%=link_to 'many providers', openid_dir %> including:</h4>
+<a href="http://www.myopenid.com/"><%=image_tag 'logo_myopenid_sm.png'%></a>
+<a href="http://dev.aol.com/aol-and-63-million-openids"><%=image_tag 'logo_aol.png'%></a>
+<a href="http://www.claimid.com/"><%=image_tag 'logo_claimid.png'%></a>
+</div>
+
+
+</div>

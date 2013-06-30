@@ -1,0 +1,31 @@
+<div id="page_menu">
+  <%= link_to 'Edit', edit_admin_metro_service_area_path(@metro_service_area) %> 
+</div>
+<h2>MSA Details</h2>
+
+<table class="items">
+  <tr>
+		<th>Field</th>
+		<th>Value</th>
+	</tr>
+	<tr class="odd">
+	  <td class="bold">Name</td>
+	  <td><%=h @metro_service_area.name %></td>
+	</tr>
+	<tr class="even">
+	  <td class="bold">Link_Name</td>
+	  <td><%=@metro_service_area.link_name %></td>
+	</tr>
+	<tr class="odd">
+	  <td class="bold">URL</td>
+	  <td><%=@metro_service_area.short_url %></td>
+	</tr>  
+</table>
+
+<h3>Links Associated with this MSA</h3>
+<div id="msa_links">
+  <%= render :partial => 'msa_links', :object => @metro_service_area.metro_service_area_links %>
+</div>
+<div id="add_an_msa_link">
+  <%= render :partial => 'add_a_link', :locals => {:msa => @metro_service_area}%>
+</div>

@@ -1,0 +1,12 @@
+
+basic:
+  personable: basic
+  personable_type: User
+  first_name: Joe
+  last_name: Schmo
+
+admin:
+  personable: admin
+  personable_type: User
+  first_name: Blanc
+  last_name: Fedora

@@ -1,0 +1,63 @@
+<% content_for("page_css") do -%>
+<style type="text/css">
+	#user_info {
+		list-style: none;
+	}
+</style>
+<% end -%>
+
+<div id="page_menu">
+	<%= link_to 'Edit', edit_admin_user_path(@user) %> |
+	<% if @user.active? %>
+	<%= link_to('Suspend', suspend_admin_user_path(@user)) %>
+	<% else -%>
+	<%= link_to('Activate', activate_admin_user_path(@user)) %>
+	<% end -%>
+	<%#= link_to 'Change password', change_password_path %>
+</div>
+<h2>User Details</h2>
+<table id="items">
+  <tr>
+		<th>Field</th>
+		<th>Value</th>
+	</tr>
+	<tr class="odd">
+	  <td class="bold">Email</td>
+	  <td><%=@user.email%></td>
+	</tr>
+	<tr class="even">
+	  <td class="bold">Name</td>
+	  <td><%= @user.name%></td>
+	</tr>
+	<tr class="odd">
+	  <td class="bold">Location</td>
+	  <td><%= @user.location %></td>
+	</tr>
+	<% unless @user.person.nil? %>
+	<tr class="even">
+	  <td class="bold">Birth Year</td>
+	  <td><%= @user.person.birth_year %></td>
+	</tr>
+	<tr class="odd">
+	  <td class="bold">URL</td>
+	  <td><%= @user.person.url%></td>
+	</tr>
+	<tr class="even">
+	  <td class="bold">Description</td>
+	  <td><%= @user.person.description %></td>
+	</tr>
+	<% end %>
+	<tr class="odd">
+	  <td class="bold">Status</td>
+	  <td><%=(@user.active?) ? 'Active' : '<span style="color: red;">Suspended</span>' %></td>
+	</tr>
+  <tr class="even">
+    <td class="bold">Account Created</td>
+    <td><%=@user.created_at.strftime '%m/%d/%Y' %></td>
+  </tr>
+  <tr class="odd">
+    <td class="bold">Last Modified</td>
+    <td><%=time_ago_in_words(@user.updated_at)%> ago</td>
+  </tr>
+</table>
+

@@ -1,0 +1,68 @@
+
+
+<div id="page_menu">
+  <%= link_to 'Edit', edit_admin_topic_path(@topic)%> 
+</div>
+
+<h2>Topic Details</h2>
+
+
+<table id="items">
+  <tr>
+		<th>Field</th>
+		<th>Value</th>
+	</tr>
+	<tr class="odd">
+	  <td class="bold">Name</td>
+	  <td><%=h @topic.name %></td>
+	</tr>
+	
+	<tr class="even">
+	  <td class="bold">Topic Hierarchy</td>
+	  <td><%= render_topic_hierarchy(@topic, true)%></td>
+	</tr>
+	
+	<tr class="odd">
+	  <td class="bold">Link Name</td>
+	  <td><%= @topic.link_name %></td>
+	</tr>
+
+	<tr class="even">
+	  <td class="bold">Total Sites</td>
+	  <td><%= @topic.all_sites.size %></td>
+	</tr>
+
+</table>
+
+<% if @topic.sites.empty? && @topic.children.empty? -%>
+	<h3>There are no topics or sites associated with this topic</h3>
+<% end -%>
+
+<% unless @topic.sites.empty? -%>
+<h3>Sites</h3>
+<ul style="margin: 0.5em 0em 1em;">
+<% @topic.sites.sort{|x,y| x.name <=> y.name}.each do |site| -%>
+	<li><%=link_to(site.name, site_path(site)) %></li>
+<% end -%>
+</ul>
+<% end -%>
+
+<% unless @topic.children.empty? -%>
+<h3>Topics / Sites</h3>
+<ul>
+	<% @topic.children.sort{|x,y| x.name <=> y.name}.each do |topic| -%>
+		<li><%=link_to(topic.name, admin_topic_path(topic)) %> (<%=topic.all_sites.size%>)
+
+			<% unless topic.all_sites.empty? -%>
+			<ul style="margin: 0.5em 3em 1em;">
+			<% topic.all_sites.sort{|x,y| x.name <=> y.name}.each do |site| -%>
+				<li><%=link_to(site.name, site_path(site)) %></li>
+			<% end -%>
+			</ul>
+			<% end -%>
+			
+		</li>
+	<% end -%>
+</ul>
+<br/>
+<% end -%>

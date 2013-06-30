@@ -1,0 +1,102 @@
+<%= error_messages_for :site %>
+<h2>
+  <% if @site_not_found %>
+  The search topic you selected is currently being indexed by ubExact.com and will be available soon.<br/>
+  <% else %>
+  ubExact&#39;s Suggest A Link
+  <% end %>
+</h2>
+
+  <% if !logged_in? && @site_not_found %>
+    <p class="special_note purple">If you&#39;d like to share your Web-wisdom for a website that would be good for the search you just performed, please add it below. Thanks for helping ubExact grow.</p>
+  <% elsif !logged_in? %>
+    <p>ubExact&reg; welcomes and encourages the user community to get involved in the evolution of ubExact&#39;s human knowledge-based result set.
+      To submit a single website (Web Page, Blog, Document, etc.) for review and inclusion, place the entire URL (web address) in the box below.</p>  
+  <% end %>
+  
+<% form_for(@site) do |f| %>
+  <%= render :partial => "form", :object => f %>
+  
+  <% if logged_in? && current_user.is_ubexpert? -%>
+    <p>
+      <b>Super Category</b><br />
+      <%= collection_select(:super_category, :id, @super_categories, :id, :name, {:prompt => true})%>
+      <%= observe_field 'super_category_id', :url => {:action => :load_primary_topics }, :with => "'id=' + value"%>
+    </p>
+
+    <div id="primary_topics">
+    </div>
+
+    <div id="sub_topics">
+    </div>
+    
+    <div id="select_msa">
+    <p><b>Metro Service Area Options</b></p>
+    <p>
+    <%= radio_button_tag("msa_indicator", "no_msa", true, {:onclick => "$('msa_assignment').hide();"}) %> This site is online only and does not belong to a local MSA.
+    </p>
+    <p>
+    <%= radio_button_tag("msa_indicator", "all_msas", false, {:onclick => "$('msa_assignment').hide();"}) %> This site is online only, but it should be visible in all MSAs.
+    </p>
+    <p>
+    <%= radio_button_tag("msa_indicator", "online_plus_all_msas", false, {:onclick => "$('msa_assignment').hide();"}) %> This site is principally an online only site, but it should show up in searches for all MSAs.
+    </p>
+    <p>
+    <%= radio_button_tag("msa_indicator", "online_plus_msa", false, {:onclick => "$('msa_assignment').show();"}) %> This site is principally an online only site, but it should also show up in searches for a designated local MSA.
+    </p>
+    <p>
+    <%= radio_button_tag("msa_indicator", "msa_only", false, {:onclick => "$('msa_assignment').show();"}) %> This site belongs to a local MSA, but it should NOT show up in searches for sites that are considered online only.
+    </p>
+    </div>
+    <div id="msa_assignment">
+    <p>
+      <b>Metro Service Area</b><br />
+      <%= text_field_with_auto_complete :metro_service_area, :name, disable_enter_key %>
+    </p> 
+  
+    <p>
+      <b>Country</b><br/>
+      <%= country_select(:country, :name, "United States", {:prompt => 'Not Applicable'})%>
+    </p>
+
+    <p>
+      <b>State</b> (US Only)<br />
+      <%#= form.text_field :state %>
+      <%= collection_select(:site, :state, State.find(:all, :order => "code ASC"), :code, :name, {:prompt => 'Not Applicable'}) %>
+    </p>
+
+    <p>
+      <b>City</b><br />
+      <%= f.text_field :city %>
+    </p>
+  </div>
+  	<%=render :partial => 'key_phrases'%>
+  <% end -%>
+  <p>
+    <%= f.submit "Suggest Site" %>  <%= link_to "Cancel", :back %>
+  </p> 
+  <% if !logged_in? && @site_not_found%>
+    <%= hidden_field_tag :searched_for, @searched_for %>
+    <p>We appreciate your help in constructing the world’s largest human edited search engine.  In fact, if you know of many websites that you would like to submit to be reviewed for inclusion, we invite you to become a ubExactor or ubExpert. You can find details on submitting multiple websites <%= link_to "here", submit_links_program_path %>.</p>
+    <p>While we index your topic, why not try a different search in the search box above. We also offer the following beta search engines or website links for your review. ubExact is not affiliated with these websites. However, we like them and believe they do a great job. We think you will too.</p>
+    <table id="sites_we_like">
+      <tr><td><%= link_to "http://laptop.org", "http://laptop.org"%></td><td>One Laptop Per Child Charity</td></tr>
+      <tr><td><%= link_to "http://yetisports.org", "http://yetisports.org"%></td><td>Pure Game Fun For Everybody</td></tr>
+      <tr><td><%= link_to "http://www.v3ggie.com", "http://www.v3ggie.com"%></td><td>Vegetarian Nutrition Search</td></tr>
+      <tr><td><%= link_to "http://www.snooth.com", "http://www.snooth.com"%></td><td>Wine Recommendation Search</td></tr>
+      <tr><td><%= link_to "http://gazopa.com", "http://gazopa.com"%></td><td>Image Search</td></tr>
+      <tr><td><%= link_to "http://www.carzen.com", "http://www.carzen.com"%></td><td>Car Search</td></tr>
+      <tr><td><%= link_to "http://www.patientslikeme.com", "http://www.patientslikeme.com"%></td><td>Patient Social Network</td></tr>
+    </table>
+  <% elsif !logged_in? %>
+    <p><em>NOTE: If you are submitting more than one website, please use the <strong>ubExactor ubExpert Submit Links Program</strong> outlined below.</em></p>
+    
+    <h2>ubExactor ubExpert Submit Links Program</h2>
+    <div class="ub_icon"><%= image_tag("ubExactor_Icon_thumb.jpg")%><p>40 Links</p></div>
+    <div class="ub_icon"><%= image_tag("ubExpert_Icon_thumb.jpg")%><p>400 Links</p></div>
+    <p>Submit links to a topic you know about!  Register to become a ubExactor or ubExpert!</p><p>Please read the <%= link_to "Submit Links Agreement", agreement_path %> before registering to become a ubExactor or ubExpert. </p> 
+      <p class="clear_fix">If you do not read the Agreement, you will not be able to complete the registrations process correctly and your content may not be accepted.</p>  
+      <p>Once you have read the Submit Links Agreement, <%= link_to "click here to register", signup_path %>.</p>
+  <% end %>
+  
+<% end %>

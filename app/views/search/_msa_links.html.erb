@@ -1,0 +1,16 @@
+<% unless @search.metro_service_areas.blank? %>
+	<div id="msa-links-box">
+	<h2>MSA Links</h2>
+		<div id="msa-links-scroll">
+		  <ul class="msa-links-list">
+		  	<% for msa in @search.metro_service_areas %>
+		  	  <li><%=link_to msa.name, msa.url, :target => "_new" %></li>
+		  	<% end %>
+		  	<% for sub_area in @search.msa_sub_areas %>
+		  	  <li><%=link_to sub_area.name, sub_area.url, :target => "_new" %></li>
+		  	<% end %>
+			</ul>
+		</div>
+	</div>
+<% end -%>
+

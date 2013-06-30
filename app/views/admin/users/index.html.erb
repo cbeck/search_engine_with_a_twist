@@ -1,0 +1,51 @@
+<% content_for("page_css") do -%>
+<% end -%>
+
+<div id="page_menu">
+  <% form_tag admin_users_path, :method => 'get' do %>
+    <%= text_field_tag :user_search, params[:user_search] %>
+    <%= submit_tag "Search", :name => nil %>
+    <%= link_to image_tag("cancel.png", :title=>"Clear Search"), admin_users_path%>
+  <% end %>
+</div>
+<h2>Manage Users</h2>
+
+<table id="items">
+	<tr>
+		<th></th>
+		<th>Login</th>
+		<th>Name</th>
+		<th>Location</th>
+		<th>Joined</th>
+		<th>Rank</th>
+	</tr>	
+<% for user in @users %>
+	<% menu_id = "item_menu_#{user.id}" %>
+	<tr onmouseover="$('<%=menu_id%>').style.visibility='visible'" 
+		  onmouseout="$('<%=menu_id%>').style.visibility='hidden'" class="<%= cycle("odd", "even") -%>" id="<%=dom_id(user)%>">
+		<td>
+			<div id="<%=menu_id%>" class="item_menu">
+			<%= link_to image_tag('bin.png'), admin_user_path(user), 
+					:confirm => 'Are you sure?', :method => :delete %>
+		  <%= link_to image_tag('pencil.png'), edit_admin_user_path(user) %>
+		  </div>
+		</td>
+		<td>
+			<%=link_to h(user.email), admin_user_path(user) %>
+		</td>
+		<td><%=h user.name %></td>
+		<td><%=h user.location %></td>
+		<td><%=user.created_at.strftime('%m/%d/%Y')%></td>
+		<td>
+		    <% if user.is_ubexpert? -%>
+		      ubExpert
+		    <% elsif user.is_ubexactor? -%>
+		      ubExactor
+		    <% else -%>
+		      ubNewbie
+        <% end -%>	
+    </td>	    
+	</tr>
+<% end %>
+</table>
+<%= will_paginate %>

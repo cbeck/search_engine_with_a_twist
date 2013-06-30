@@ -1,0 +1,13 @@
+<% unless @search.preferred_links.blank? %>
+	<div id="preferred-links-box">
+		<h2>Preferred Links &amp; Ads</h2>
+		<div id="preferred-links-scroll">
+			<ul class="preferred-links-list">
+		  	<% for phrase in @search.preferred_links %>
+		  	  <% kp_url = (phrase.advertisement_url.blank?) ? phrase.site.url : phrase.advertisement_url  %>
+		  	  <li class="<%= "paid " if phrase.paid? -%>"><%=link_to phrase.label, kp_url, :target => "_new" %></li>
+		  	<% end %>
+			</ul>
+		</div>
+	</div>
+<% end -%>

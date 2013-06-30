@@ -1,0 +1,27 @@
+<div id="feature-boxes">
+	<div id="pop-cat-box">
+		<h2>Popular Search Categories</h2>
+		<%= render_popular_categories(@categories, @search)%>
+		
+		<% unless @not_local %>
+		  <p id="instructions">Selecting A Popular Category Will Give Results Only For The State You Have Chosen</p>
+		<% end %>
+	</div>
+	<div id="msa-cat-box">
+	  <h2><%#= link_to(image_tag("online-msa-button-small-up.png", :id=>'online_msa_button', :title => 'View Online Sites Only', :border => "0", :onmouseover => "MM_swapImage('online_msa_button','','/images/online-msa-button-small-over.png',1)", :onmouseout => "MM_swapImgRestore()"), msa_path("online"))%>MSA Search<br/><b>(Metro Service Area)</b></h2>
+		<div style="clear: both; width: 320px; height: 220px; padding: 0px;">
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="320" height="220">
+          <param name="movie" value="/flash/<%=@flash_filename%>.swf" />
+          <param name="quality" value="high" />
+          <param name="wmode" value="transparent" />
+          <embed src="/flash/<%=@flash_filename%>.swf" width="320" height="220" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent"></embed>
+	  </object>
+	  </div>
+	  <%= render_msa_links(@msas, @search)%>		
+		<% if @not_local %>
+		  <ul id="final_msa" class="msa-top-links"><li><%= link_to "Other Countries", msa_path("other")%></li></ul>
+		<% else %>
+		  <ul id="final_msa" class="msa-top-links"><li><%= link_to "All " + @msa.name + " Results", msa_uri(@msa, @search, true)%></li></ul>
+		<% end %>
+  </div>
+</div>

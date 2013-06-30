@@ -1,0 +1,11 @@
+<table id="items">
+<% unless msa_links.empty? %>
+  <tr>
+		<th>Name of External Site</th>
+		<th>URL</th>
+	</tr>
+		<%= render :partial => 'msa_link', :collection => msa_links %>  
+<% else %>
+  <tr><td>There are no links associate with this MSA.</td></tr>
+<% end %>
+</table>

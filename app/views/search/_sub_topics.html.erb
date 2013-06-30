@@ -1,0 +1,13 @@
+<% @sub_topics = @search.sub_topics -%>
+<% unless @sub_topics.blank? -%>
+<div id="sub-topics">
+	<h2>Sub Topics</h2>
+  <div id="sub-topics-scroll">
+    <ul class="sub-topics-list">
+  	<% for topic in @sub_topics %>
+				<li><%=link_to topic.name, topic_uri(topic, @search) %></li>
+  	<% end %>
+  	</ul>
+  </div>
+</div>
+<% end -%>

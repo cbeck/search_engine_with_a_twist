@@ -1,0 +1,12 @@
+--- 
+javascripts: 
+- base: 
+  - prototype
+  - effects
+  - dragdrop
+  - controls
+  - application
+  - search
+stylesheets: 
+- base: 
+  - styles

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="phrase" content="Enter your search"/>
+  <title>ubExact.com</title>
+	<style type="text/css">
+		body { background-color: #fff; color: #65399d; text-align: center; font-family: arial, sans-serif; }
+		div.dialog {
+			width: 25em;
+			padding: 8em 4em;
+			margin: 1em auto 0 auto;
+			background: transparent url("/images/ubExact-Logo.jpg") no-repeat top center;
+		}
+		h1 { font-size: 100%; color: #000; line-height: 1.5em; }
+	</style>
+
+    <script type="text/javascript">
+      window.onload = function() {
+        var videoIds = [
+          'zlfKdbWwruY', // Where the Hell is Matt? (2008)
+          'by8oyJztzwo', // canon rock
+          'O9mEKMz2Pvo', // while my guitar gently weeps
+//          'mDx5qPqBaSI', // duck tales
+//          'ZWUaQVZHzyI', // 24 ATHF
+          'R706isyDrqI', // 1984
+          'yYp2Aloz-uE', // soulja boy
+          'DDg7kWgs5e0', // dancing walrus
+          '1yqVD0swvWU', // How Lord of the Rings Should Have Ended
+          'TQyuIQmVelA', // How The Matrix Should Have Ended
+          'HoNgMVFQNBI', // How Spiderman 3 Should Have Ended
+          'PmZyB_ghpa0', // flying dude
+//          'YZ7wyXCktS8', // store wars
+          'cMV_gvBwL1g', // basketball shot
+          'JvltzwkUEEA', // mantage
+          'ueJeC2pxxbM', // airbus
+          'psaaqDKo-yk', // office pranks
+          '5blbv4WFriM', // darth vader
+          '4bekQU9l8hk', // tetris
+          'S-uaBnWCliU', // robot wars
+          'uAxG3lgRKUU', // best buy
+          'l7Z818lnTK0', // coke bomb
+          'S3qwHPqITB4', // kung fu baby
+          '59ZX5qdIEB0', // Beatboxing flute inspector gadget remix
+          'lk5_OSsawz4'  // "Star Wars" - an a capella tribute to John Williams
+        ]
+        var randomId = videoIds[Math.ceil(Math.random() * videoIds.length)]
+        var videoURL = 'http://youtube.com/v/' + randomId + '&autoplay=1'
+        var embed = '<object id="video" width="400" height="325"><param name="movie" value="'+ videoURL + '"></param><param name="wmode" value="transparent"></param><embed src="' + videoURL + '" type="application/x-shockwave-flash" wmode="transparent" width="400" height="325"></embed></object>'
+        document.getElementById('video').innerHTML = embed
+      }
+    </script>
+  </head>
+
+	<body>
+		<%
+		  reason = ENV['REASON'] || "maintenance"
+		  deadline = (ENV['UNTIL']) ? "by #{ENV['UNTIL']}" : "shortly"
+		  now = Time.now.strftime("%H:%M %Z")
+		%>
+
+		<div class="dialog">
+			<div id="video"></div>
+			<h1>We're down for maintenance.</h1>
+			<p>We'll be back shortly (until then, enjoy this video).</p>
+		</div>
+
+	</body>
+	</html>
+

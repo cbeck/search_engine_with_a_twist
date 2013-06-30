@@ -1,0 +1,38 @@
+<div id="page_menu">
+  <%= link_to 'Back', :back %> 
+</div>
+
+<h2>Edit a Topic</h2>
+
+<%= error_messages_for :topic %>
+
+<% form_for([:admin, @topic]) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <p><b>Current Topic Hierarchy</b> <%= link_to_function("Change", "$('topics').show()")%><br/>
+    <%= render_topic_hierarchy(@topic, true) %>
+  </p>
+  
+  <div id="topics" style="display:none">
+  
+  <p>
+    <b>Super Category</b><br />
+    <%= collection_select(:super_category, :id, @super_categories, :id, :name, {:prompt => true})%>
+    <%#= text_field_with_auto_complete :super_category, :name %>
+    <%= observe_field 'super_category_id', :url => {:action => :load_primary_topics}, :with => "'id=' + value"%>
+  </p>
+
+  <div id="primary_topics">
+  </div>
+
+  </div>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+

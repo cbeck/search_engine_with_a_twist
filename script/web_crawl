@@ -1,0 +1,89 @@
+#!/usr/bin/env ruby
+#
+# Author: Scott Nedderman (http://blog.netphase.com)
+# Date: 11/4/2006
+#
+
+require 'net/http'
+require 'uri'
+
+class WebPage
+  attr_accessor :uri, :depth, :contents, :response
+  @@site_uri = nil
+  def initialize(url, depth=0)    
+    @uri = URI.parse(url)
+    @@site_uri = @uri.clone if depth == 0
+    @depth = depth
+
+    if @uri.relative?
+      path = @uri.path
+      @uri = @@site_uri.clone
+      @uri.path = path
+    end
+  end
+  def url
+    @uri.to_s
+  end
+  def contents
+    @response.body
+  end
+  def get
+    @response = Net::HTTP.get_response(uri)
+    @response.body if @response.code == '200'
+  end
+
+  def links(pattern=/<a href\s*=\s*["']([^#"']+)["']/i)
+    @links ||= @response.body.scan(pattern).collect {|url| WebPage.new(url.to_s, @depth+1)}
+  end
+
+  def local?(domain_re=nil)
+    @uri.host == @@site_uri.host || @uri.host =~ domain_re
+  end
+end
+
+class WebCrawler
+  def initialize(url, max_depth=1)
+    @visited = Hash.new
+    @queue = Array.new
+    @max_depth=1
+    add(WebPage.new(url))
+    puts "Initialized site crawl for #{url}"
+  end
+
+  def add(page)
+    @queue.push(page)
+    @visited[page.url] = false
+  end
+
+  def crawlSite(domain_re=nil)
+    while (!@queue.empty?)
+      page = @queue.shift
+      if page.get
+        yield page.url, page.contents
+        if page.depth < @max_depth
+          unless page.links.nil?
+            page.links.each do |p|
+              # puts "adding: #{p.url}"
+              add(p) unless @visited.has_key?(p.url) or !p.local?(domain_re)
+            end
+          end
+        end
+        @visited[page.url] = true
+      end
+    end
+  end
+end
+
+wc = WebCrawler.new(ARGV[0], ARGV[1])
+@pages = Hash.new
+wc.crawlSite(/ubexact/) { |url, page_text|
+  puts "Retrieved #{url}"
+  # @pages[url] = page_text
+  # SITE_INDEX << { :url => url, :context => page_text }
+}
+
+# puts "\nPage sizes for #{ARGV[0]}"
+# @pages.each_key { |key|
+#  puts "#{key} => #{@pages[key].size}"
+#}
+

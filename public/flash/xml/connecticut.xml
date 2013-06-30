@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<map state="Connecticut" background="" textColor="000000" normal="98ba97" rollover="98ba97" border="ffffff" rollover_sound="false">
+<county normal="" rollover="" name="" url=""/>
+<county normal="485748" rollover="1d231d" name="Hartford MSA" url="http://www.ubexacthartfordmsa.com"/>
+<county normal="485748" rollover="1d231d" name="Hartford MSA" url="http://www.ubexacthartfordmsa.com"/>
+<county normal="" rollover="" name="" url=""/>
+<county normal="485748" rollover="1d231d" name="Bridgeport MSA" url="http://www.ubexactbridgeportmsa.com"/>
+<county normal="5f715f" rollover="1d231d" name="New Haven MSA" url="http://www.ubexactnewhavenmsa.com"/>
+<county normal="485748" rollover="1d231d" name="Hartford MSA" url="http://www.ubexacthartfordmsa.com"/>
+<county normal="5f715f" rollover="1d231d" name="Norwich MSA" url="http://www.ubexactnorwichmsa.com"/>
+</map>
+
+

@@ -1,0 +1,13 @@
+<% menu_id = "item_menu_#{msa.id}" %>
+<tr onmouseover="$('<%=menu_id%>').style.visibility='visible'" 
+	  onmouseout="$('<%=menu_id%>').style.visibility='hidden'" class="<%= cycle("odd", "even") -%>" id="<%=dom_id(msa)%>">
+	<td>
+		<div id="<%=menu_id%>" class="item_menu">
+		<%= link_to image_tag('bin.png', :title=>"Delete #{msa.name}"), admin_metro_service_area_path(msa), 
+				:confirm => 'This will permanently delete all information for #{msa.name} from our system. This cannot be undone. Are you sure you want to do this?', :method => :delete %>
+	  <%= link_to image_tag('pencil.png', :title=>"Edit #{msa.name}"), edit_admin_metro_service_area_path(msa) %>
+	  </div>
+	  <%=link_to msa.name, [:admin, msa] %>
+	</td>
+	<td><%= msa.short_url %></td>
+</tr>

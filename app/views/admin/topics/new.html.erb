@@ -1,0 +1,36 @@
+<h2>Add a New Topic</h2>
+<p>Creating new Super Categories, Primary Topics and Subtopics all begin with the same first step:  creating a new topic. 
+   After you create your new topic, you can edit it to assign it to any existing super category or primary topic, if needed.</p>
+   <p>By default, all new topics are created as Super Categories, meaning they are all created at the top level of the hierarchy.</p>
+
+<%= error_messages_for :topic %>
+
+<% form_for([:admin, @topic]) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <p><b>This topic will be created as a super category.  If it should not be a super category, </b> <%= link_to_function("assign it to a category now.", "$('topics').show()")%><br/>
+  </p>
+  
+  <div id="topics" style="display:none">
+  
+  <p>
+    <b>Super Category</b><br />
+    <%= collection_select(:super_category, :id, @super_categories, :id, :name, {:prompt => true})%>
+    <%#= text_field_with_auto_complete :super_category, :name %>
+    <%= observe_field 'super_category_id', :url => {:action => :load_primary_topics}, :with => "'id=' + value"%>
+  </p>
+
+  <div id="primary_topics">
+  </div>
+
+  </div>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+

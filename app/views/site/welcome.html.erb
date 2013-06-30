@@ -1,0 +1,36 @@
+<% content_for("page_css") do -%>
+<style type='text/css'>
+	#sidebar ul { list-style: none; margin: 1em 1em 0 0;}
+	#sidebar li { margin-bottom: 0.5em;}
+</style>
+<% end -%>
+
+<% content_for("sidebar") do -%>
+<h3>Features</h3>
+<ul id="features">
+  <li>Elit sed diam, nonummy nibh euismod tincidunt ut laoreet!</li>
+  <li>Possim assum typi non habent claritatem insitam est usus legentis?</li>
+  <li>Seacula quarta decima et quinta decima eodem modo typi qui nunc nobis.</li>
+  <li>Quam littera gothica quam nunc putamus parum claram anteposuerit</li>  
+</ul>
+<% end -%>
+
+<div>
+	<%=render :partial => '/search/form' %>
+
+  <h2>Welcome</h2>
+
+	<p>Consuetudium lectorum mirum est notare quam littera gothica quam nunc putamus parum claram anteposuerit? Nihil imperdiet doming id quod mazim placerat facer possim assum? Per seacula quarta decima et quinta decima eodem modo typi qui nunc nobis. Feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum.
+	</p>
+	
+	<p>Quinta decima eodem modo typi, qui nunc nobis videntur parum clari fiant sollemnes in. Et accumsan et iusto odio dignissim qui, blandit praesent luptatum zzril. Hendrerit in vulputate velit esse molestie consequat vel illum dolore eu feugiat nulla. In iis qui facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod ii legunt?
+	</p>
+	
+	<p>Option congue nihil imperdiet doming id; quod mazim placerat facer possim assum. Volutpat ut wisi enim ad minim veniam quis? Dolore magna aliquam erat nostrud exerci tation ullamcorper suscipit lobortis: nisl ut aliquip ex. Luptatum zzril delenit augue duis dolore te feugait nulla facilisi nam liber tempor?
+	</p>
+	
+  <p class="more">
+  Need more info? <%= link_to "Check out how it works...", '/' %>
+  </p>
+</div>
+ 

@@ -1,0 +1,8 @@
+<% unless @search.sites.size < 10 -%>
+	<%=link_to_remote 'Get next 10 results', 
+			:url => "#{request.url}?page=#{@search.page.to_i+1}&activity=#{@sea}"
+			# :url => search_page_path(:term => @search.term, 
+			# 												 :page => @search.page.to_i+1, 
+			# 												 :activity => @search.activity) 
+														%>
+<% end -%>

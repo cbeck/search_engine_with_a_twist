@@ -1,0 +1,15 @@
+<div id="page_menu">
+  <%= link_to 'Edit', edit_admin_blacklisted_site_path(@blacklisted_site) %> 
+</div>
+<h2>Blacklisted Site Details</h2>
+
+<table class="items">
+  <tr>
+		<th>Field</th>
+		<th>Value</th>
+	</tr>
+	<tr class="odd">
+	  <td class="bold">URL</td>
+	  <td><%=h @blacklisted_site.url %></td>
+	</tr>
+</table>

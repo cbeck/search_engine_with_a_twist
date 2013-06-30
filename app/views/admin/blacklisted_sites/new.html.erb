@@ -1,0 +1,15 @@
+<h2>New Blacklisted Site</h2>
+
+<% form_for([:admin, @blacklisted_site]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', admin_blacklisted_sites_path %>

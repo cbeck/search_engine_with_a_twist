@@ -1,0 +1,31 @@
+<% content_for "page_scripts" do -%>
+  <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<% end -%>
+
+<h2>ubExactor ubExpert Registration</h2>
+
+<%= nested_error_messages_for :user %>
+
+<% form_for @user do |f| -%>
+<div class="form-outer">
+	<div class="form">
+	  <p>
+			Be sure to <strong>provide a valid email address</strong>.  After clicking "Sign up" 
+			we will send you a message to that address with a special link to activate your account.
+		</p>
+		<p>
+			Your email address will only be used to communicate with you regarding your account with
+			us and will not be sold to any third party.
+		</p>
+
+		<div>
+		  <p><%= check_box_tag "user[data][person][agreed_to_terms]" %> &nbsp;<strong>I have read and agree to the ubExact Privacy Policy Terms Of Use and Submit Links
+		    Agreement</strong>		    
+		  </p>
+		  <%= render :partial => "form", :object => f %>
+		</div>
+	</div>
+</div>
+<p><%= submit_tag 'Sign up' %></p>
+<% end -%>
+

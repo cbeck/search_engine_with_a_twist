@@ -1,0 +1,47 @@
+<div class="form-outer">
+  <div class="form">
+    <table class="push_bottom">	
+  	<tr>
+  		<th align="left">Email (this will be used to login and must be unique in our system)</th>
+  	</tr>
+  	<tr>
+  		<td><%= form.text_field :email %></td>
+  	</tr> 
+  	<tr>
+  	  <th align="left">ubAlias (your own special handle)</th>
+  	</tr>
+  	<tr>
+  	  <td><%= form.text_field :ub_alias %></td>
+  	</tr>
+    </table>
+    <% unless @user.new_record? %>
+    <div class="push_bottom" id="password_link">
+      <strong><%= link_to_function("Change Password", "$('password').show(); $('password_link').hide();")%></strong>
+    </div>
+    <% end %>
+    <div id="password" <%= 'style="display:none"' unless @user.new_record? %>>
+      <table class="push_bottom">
+        <tr>
+      		<th align="left">Password</th>
+      	</tr>
+      	<tr>
+      		<td><%=password_field_tag 'user[password]', nil, :size => 25 %></td>
+      	</tr>
+      	<tr>
+      		<th align="left">Confirmation</th>
+      	</tr>  	
+      	<tr>
+      		<td><%=password_field_tag 'user[password_confirmation]', nil, :size => 25 %></td>
+      	</tr>
+      </table>
+    </div>
+    <% form.fields_for :data do |data| -%>
+    	<%=render :partial => '/people/form', :object => data, 
+    			:locals => { :person =>  @user.person }%>
+    <% end -%>  
+    <br/>
+  </div>
+</div>
+<script type="text/javascript">
+     Event.observe(window, 'load', function() { document.getElementById('user[password]').value = ""; });
+</script>

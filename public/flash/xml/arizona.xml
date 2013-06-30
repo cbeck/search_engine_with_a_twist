@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<map state="Arizona" background="" textColor="000000" normal="98ba97" rollover="98ba97" border="ffffff" rollover_sound="false">
+<county normal="" rollover="" name="" url=""/>
+<county normal="5f715f" rollover="1d231d" name="Flagstaff MSA" url="http://www.ubexactflagstaffmsa.com"/>
+<county normal="" rollover="" name="" url=""/>
+<county normal="" rollover="" name="" url=""/>
+<county normal="" rollover="" name="" url=""/>
+<county normal="5f715f" rollover="1d231d" name="Prescott MSA" url="http://www.ubexactprescottmsa.com"/>
+<county normal="" rollover="" name="Gila" url=""/>
+<county normal="485748" rollover="1d231d" name="Yuma MSA" url="http://www.ubexactyumamsa.com"/>
+<county normal="485748" rollover="1d231d" name="Phoenix-Mesa-Scottsdale MSA" url="http://www.ubexactphoenixmsa.com"/>
+<county normal="485748" rollover="1d231d" name="Phoenix-Mesa-Scottsdale MSA" url="http://www.ubexactphoenixmsa.com"/>
+<county normal="" rollover="" name="Graham" url=""/>
+<county normal="" rollover="" name="Greenlee" url=""/>
+<county normal="5f715f" rollover="1d231d" name="Tucson MSA" url="http://www.ubexacttucsonmsa.com"/>
+<county normal="" rollover="" name="Santa Cruz" url=""/>
+<county normal="5f715f" rollover="1d231d" name="Sierra Vista MSA" url="http://www.ubexactsierravistamsa.com"/>
+</map>
+
+

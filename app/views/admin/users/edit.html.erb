@@ -1,0 +1,19 @@
+<%=render :partial => '/users/form_sidebar' %>
+
+<h2>Edit User Account</h2>
+
+<%= error_messages_for :user %>
+
+<% form_for([:admin, @user]) do |f| %>
+<%= hidden_field_tag "user[data][person][agreed_to_terms]", true %> 	    
+	<%=render :partial => '/users/form', :object => f %>
+	<p><strong>Over-ride ubRank for this user?</strong><br/>
+	<%= f.radio_button :ub_override, "No" %>No
+	<%= f.radio_button :ub_override, "ubexactor" %> ubExactor
+	<%= f.radio_button :ub_override, "ubexpert" %> ubExpert
+	
+	</p>
+	
+	<%= f.submit "Update" %>  <%= link_to "Cancel", :back %>
+	
+<% end %>

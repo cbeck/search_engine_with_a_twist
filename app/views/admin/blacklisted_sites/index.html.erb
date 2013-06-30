@@ -1,0 +1,25 @@
+<div id="page_menu">
+  <% form_tag admin_blacklisted_sites_path, :method => 'get' do %>
+    <%= text_field_tag :blacklisted_site_search, params[:blacklisted_site_search] %>
+    <%= submit_tag "Search", :name => nil %>
+    <%= link_to image_tag("cancel.png", :title=>"Clear Search"), admin_blacklisted_sites_path%>
+  <% end %>
+</div>
+
+<h2>Manage the Blacklist</h2>
+<p><%= link_to 'Add a Blacklisted Site', new_admin_blacklisted_site_path %></p>
+<table id="items">
+  <tr>
+		<th>Offending URL</th>
+	</tr>
+  <% unless @blacklisted_sites.empty? %>
+    <%= render :partial => "blacklisted_site", :collection => @blacklisted_sites %>
+   <% else %>
+    <tr><td colspan="4">You have no Blacklisted Sites in the database.  Excellent!</td></tr>
+   <% end %>
+</table>
+
+<br />
+
+<%= will_paginate @blacklisted_sites %>
+

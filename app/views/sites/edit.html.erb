@@ -1,0 +1,98 @@
+<h2>Edit a Site</h2>
+
+<%= error_messages_for :site %>
+
+<% form_for(@site) do |f| %>
+  <% if current_user.admin? -%>
+    <p><b>Disable this Site</b><br/>
+      <%= f.check_box :disabled %> By checking this box I understand this site will not be show up in any search results. 
+    </p>
+  <% end -%>
+  <%= render :partial => "form", :object => f %>
+  <p><b>Previous Comments on this Site</b></p>
+  <% @site.ordered_comments.each {|c|  %>
+      <%= c.created_at.to_s(:long) %>: <%= c.comment %><br/>
+  <% } %>
+  <p></p>
+  <p><b>Current Topic Hierarchy</b> <%= link_to_function("Change", "$('topics').show()")%><br/>
+    <%= (@site.topic.nil?) ? "None" : render_topic_hierarchy(@site.topic)  %>
+  </p>
+  <div id="topics" style="display:none">
+  
+  <p>
+    <b>Super Category</b><br />
+    <%= collection_select(:super_category, :id, @super_categories, :id, :name, {:prompt => true})%>
+    <%#= text_field_with_auto_complete :super_category, :name %>
+    <%= observe_field 'super_category_id', :url => {:action => :load_primary_topics}, :with => "'id=' + value"%>
+  </p>
+
+  <div id="primary_topics">
+  </div>
+
+  <div id="sub_topics">
+  </div>
+  
+  </div>
+  <div id="select_msa">
+  <p><b>Metro Service Area Options</b></p>
+  <p>
+  <%= radio_button_tag("msa_indicator", "no_msa", (@site.metro_service_area.nil? && !@site.all_msas?), {:onclick => "$('msa_assignment').hide();"}) %> This site is online only and does not belong to a local MSA.
+  </p>
+  <p>
+  <%= radio_button_tag("msa_indicator", "all_msas", (@site.metro_service_area.nil? && @site.all_msas?), {:onclick => "$('msa_assignment').hide();"}) %> This site is online only, but it should be visible in all MSAs.
+  </p>
+  <p>
+  <%= radio_button_tag("msa_indicator", "online_plus_all_msas", (!@site.metro_service_area.nil? && @site.all_msas?), {:onclick => "$('msa_assignment').show();"}) %> This site is principally an online only site, but it should show up in searches for all MSAs.
+  </p>
+  <p>
+  <%= radio_button_tag("msa_indicator", "online_plus_msa", (!@site.metro_service_area.nil? && !@site.all_msas?), {:onclick => "$('msa_assignment').show();"}) %> This site is principally an online only site, but it should also show up in searches for a designated local MSA.
+  </p>
+  <p>
+  <%= radio_button_tag("msa_indicator", "msa_only", (!@site.metro_service_area.nil? && !@site.online?), {:onclick => "$('msa_assignment').show();"}) %> This site belongs to a local MSA, but it should NOT show up in searches for sites that are considered online only.
+  </p>
+  </div>
+  <% display_style = "display:none;" if @site.metro_service_area.nil? %>
+  <div id="msa_assignment" style="<%= display_style%>">
+  <p><b>Assigned Metro Service Area</b> <%= link_to_function("Change", "$('msa').show()")%><br/>
+    <%=(@site.metro_service_area.nil?) ? "None" :  @site.metro_service_area.name %>
+  </p>
+  <div id="msa" style="display:none;">
+  <p>
+    <b>Metro Service Area</b><br />
+    <%= text_field_with_auto_complete :metro_service_area, :name, disable_enter_key %>
+  </p>
+  </div>
+  
+  <p>
+    <b>Country</b><br/>
+    <%= collection_select(:site, :country_code, Country.find(:all, :order => "name ASC"), :code, :name, {:prompt => 'Not Applicable'}) %>
+  </p>
+
+  <p>
+    <b>State</b> (US Only)<br />
+    <%= collection_select(:site, :state, State.find(:all, :order => "code ASC"), :code, :name, {:prompt => 'Not Applicable'}) %>
+  </p>
+
+  <p>
+    <b>City</b><br />
+    <%= f.text_field :city %>
+  </p>
+  </div>
+  <% if current_user.admin? %>
+    <p><b>Advertising Options</b><br/>
+      <%= f.check_box :ad_only %> This site is an AD-ONLY site - it should not show up in search results.<br/>
+      <i>See more advertising options below to restrict the ads to MSAs based on key phrases.</i>
+    </p>
+  <% end %>
+  
+  <%=render :partial => 'key_phrases'%>
+
+
+  <p>
+    <%= f.submit "Update" %>  <%= link_to "Cancel", :back %>
+  </p>
+  
+  
+  
+<% end %>
+

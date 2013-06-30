@@ -1,0 +1,30 @@
+<div id="page_menu">
+  <% form_tag admin_path, :method => 'get' do %>
+    <%= radio_button_tag :include_loader, 'false', @include_loader == false  %> user only
+    <%= radio_button_tag :include_loader, 'true', @include_loader == true  %> all
+    <%= text_field_tag :site_search, params[:site_search] %>
+    <%= submit_tag "Search", :name => nil %>
+    <%= link_to image_tag("cancel.png", :title=>"Clear Search"), admin_sites_path%>
+  <% end %>
+  
+</div>
+
+<h2>Admin Dashboard</h2>
+<h3>Sites Waiting Approval</h3>
+<table id="items" class="clear_none">
+  <tr>
+		<th>URL</th>
+		<th>Created</th>
+		<th>Submitted By</th>
+	</tr>  
+ <% unless @sites.empty? %>
+  <%= render :partial => "site", :collection => @sites %>
+ <% else %>
+  <tr><td colspan="3">You have no sites submitted that have not been approved.</td></tr>
+ <% end %>
+</table>
+
+
+<%= will_paginate @sites %>
+
+

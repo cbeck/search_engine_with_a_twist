@@ -1,0 +1,194 @@
+# See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
+#
+
+# Google
+User-agent: googlebot
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# Google Mobile
+User-agent: Googlebot-Mobile
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# Yahoo!
+User-agent: slurp
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# MSN
+User-agent: MSNBot
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# MSN Mobile
+User-agent: msnbot-media/1.0
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# dmoz
+User-agent: Robozilla
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# Alexa
+User-agent: ia_archiver
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# Lycos/Alltheweb/Fast
+User-agent: FAST-WebCrawler
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# Lycos
+User-agent: Lycos_Spider_(T-Rex)
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# Ask / Teoma
+User-agent: teoma
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# Altavista
+User-agent: scooter
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# Northern Light
+User-agent: gulliver
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# Gigablast
+User-agent: Gigabot
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# Excite / HighBeam
+User-agent: ArchitextSpider
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# LookSmart
+User-agent: ZyBorg
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# DomainTools WhoIs
+User-agent: SurveyBot
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# Baidu
+User-agent: Baiduspider
+Disallow: /cgi-bin
+Disallow: /login
+Disallow: /logout
+Disallow: /signup
+Disallow: /forgot_password
+Disallow: /suggest_a_link
+Disallow: /history
+Disallow: /search
+
+# Disallow all other crawlers
+User-agent: *
+Disallow: /
+

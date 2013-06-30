@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+art:
+  name: Art Dealer
+  link_name: artdealer
+
+car:
+  name: Car Reviews
+  link_name: carreviews
+  
+travel:
+  name: Travel Deals
+  link_name: travel

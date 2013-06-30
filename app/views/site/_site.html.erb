@@ -1,0 +1,14 @@
+<% menu_id = "item_menu_#{site.id}" %>
+<tr onmouseover="$('<%=menu_id%>').style.visibility='visible'" 
+	  onmouseout="$('<%=menu_id%>').style.visibility='hidden'" class="<%= cycle("odd", "even") -%>" id="<%=dom_id(site)%>">
+	<td>
+		<div id="<%=menu_id%>" class="item_menu">
+		<%= link_to image_tag('bin.png', :title=>"Delete #{site.url}"), site_path(site), 
+				:confirm => 'This will permanently delete all information for #{site.url} from our system. This cannot be undone. Are you sure you want to do this?', :method => :delete %>
+	  <%= link_to image_tag('pencil.png', :title=>"Edit #{site.url}"), edit_site_path(site) %>
+	  </div>
+	  <%=link_to site.short_url, site %>
+	</td>
+	<td><%=site.created_at.strftime('%m/%d/%Y')%></td>
+	<td><%=site.user.email if (!site.user.nil?) %></td>
+</tr>

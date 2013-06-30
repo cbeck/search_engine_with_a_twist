@@ -1,0 +1,15 @@
+<% content_for("page_css") do -%>
+<% end -%>
+
+	<div id="results-col">
+	  <%= render :partial => 'sub_topics' %>
+  	<%= render :partial => 'results' %>
+  	<%= render :partial => 'bookmarks' %>
+	</div>
+
+	<div id="results-sidebar">
+		<%= render :partial => 'history' %>
+		<%= render :partial => 'preferred_links' %>
+		<%= render :partial => 'msa_links' %>
+		<%= render :partial => 'related_topics' %>
+	</div>

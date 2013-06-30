@@ -1,0 +1,12 @@
+<% fields_for personable.person do |person| %>
+	<table>	
+	<tr>
+		<th align="left">First name</th>
+		<th align="left">Last name</th>
+	</tr>
+	<tr>
+		<td><%= person.text_field :first_name, :size => 15 %></td>
+		<td><%= person.text_field :last_name, :size => 15 %></td>
+	</tr>
+	</table>
+<% end %>

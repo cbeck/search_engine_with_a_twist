@@ -1,0 +1,28 @@
+<div id="page_menu">
+  <% form_tag admin_metro_service_areas_path, :method => 'get' do %>
+    <%= text_field_tag :msa_search, params[:msa_search] %>
+    <%= submit_tag "Search", :name => nil %>
+    <%= link_to image_tag("cancel.png", :title=>"Clear Search"), admin_metro_service_areas_path%>
+  <% end %>
+</div>
+
+<h2>Manage MSAs</h2>
+<p><%= link_to 'Add an MSA', new_admin_metro_service_area_path %></p>
+<table id="items">
+  <tr>
+		<th>Name</th>
+		<th>URL</th>
+	</tr>
+  <% unless @metro_service_areas.empty? %>
+    <%= render :partial => "msa", :collection => @metro_service_areas %>
+   <% else %>
+    <tr><td colspan="4">You have no MSAs in the database.  This may be a serious problem.</td></tr>
+   <% end %>
+</table>
+
+<br />
+
+<%= will_paginate @metro_service_areas %>
+
+
+

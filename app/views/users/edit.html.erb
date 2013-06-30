@@ -1,0 +1,23 @@
+<% one_column %>
+
+<%=render :partial => '/users/form_sidebar' %>
+
+<h3>Account Info</h3>
+
+<div id="page_menu">
+	<%#= link_to 'Change password', change_password_path %>
+</div>
+
+<%= error_messages_for :user %>
+
+<% form_for(@user) do |f| %>
+	<%=render :partial => "form", :object => f %>
+	<div id="form_stats">
+  	<p>Member since <%=@user.created_at.strftime '%m/%d/%Y' %> &nbsp;&nbsp;Profile updated <%=time_ago_in_words(@user.updated_at)%> ago</p>
+  </div>
+	<div id="submit">
+   	<%= submit_tag "Update" %><%= link_to "Cancel", businesses_url %>
+  </div>
+<% end %>
+<br/>
+
